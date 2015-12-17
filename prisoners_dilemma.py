@@ -65,13 +65,13 @@ def play_round(player1, player2, history1, history2, score1, score2):
                 new_score2 = score2 + RELEASE
             else:
                 # players 1,2 collude, betray; get sucker, tempation
-                new_score1 = score1 + SEVERE_PUNISHMENT
+                new_score1 = score1 + RELEASE
                 new_score2 = score2 + TREAT
         else:
-            if action2 == 'c':
+            if action2 == 'b':
                 # players 1,2 betray, collude; get tempation, sucker
                 new_score1 = score1 + TREAT
-                new_score2 = score2 + SEVERE_PUNISHMENT                       
+                new_score2 = score2 + RELEASE                       
             else:
                 # both players betray; get punishment   
                 new_score1 = score1 + PUNISHMENT
@@ -113,6 +113,22 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
     # This example player always colludes
     if player == 0:
         if getting_team_name:
+            return 'backstabber'
+        else:
+            return 'b'
+
+    
+        
+            
+                
+                    
+                            
+    ######
+    ######
+    #
+    #This example player always betrays.      
+    elif player == 1:
+        if getting_team_name:
             #if there was a previous round just like 
             return 'loyal vengeful with permanent second impression'
         else:
@@ -139,22 +155,6 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
                     return 'b' # betray is they were severely punished last time
                 else:
                     return 'c' #otherwise collude
-
-    
-        
-            
-                
-                    
-                            
-    ######
-    ######
-    #
-    #This example player always betrays.      
-    elif player == 1:
-        if getting_team_name:
-            return 'backstabber'
-        else:
-            return 'b'
 
 
 
